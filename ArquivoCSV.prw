@@ -67,5 +67,5 @@ Static Function xProcessa(aDados)
     Local nIdade := Val(aDados[2])
     Local cCargo := Upper(aDados[3])
     Local cSetor := Upper(aDados[4])
-    Local dDtAdm := DToC(aDados[5])
+    Local dDtAdm := CToD(aDados[5])
 Return

@@ -29,19 +29,18 @@ User Function A010TOK()
     If MSGYESNO("Deseja incluir ou alterar o produto?")
         // Verifica se o grupo pertence aos permitidos
         If AScan(aGruposPermit, cGrupo) > 0
-            If MSGYESNO("Incluir produto na tabela complementar?")
-                DbSelectArea("Z01"+cFilial)
-                DbSetOrder(1)
-                // Verifica se o produto já está cadastrado
-                If !DbSeek(cFilial + cProduto)
+            DbSelectArea("Z01"+cFilial)
+            DbSetOrder(1)
+            // Verifica se o produto já está cadastrado
+            If !DbSeek(cFilial + cProduto)
+                // Pergunta ao usuário se deseja incluir o produto na tabela complementar
+                If MSGYESNO("Incluir produto na tabela complementar?")
                     DbAppend()
                     Z01->Z01_FILIAL := cFilial
                     Z01->Z01_COD    := cProduto
-                    Z01->Z01_LOCALIZ := .T.
+                    Z01->Z01_LOGICO := .T.
                     DbCommit()
                     MsgInfo("Produto incluído na tabela com sucesso.")
-                Else
-                    MsgInfo("Produto já existe na tabela complementar.")
                 EndIf
             EndIf
         EndIf

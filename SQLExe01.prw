@@ -17,6 +17,7 @@ User Function SQLExe01()
     // Construção da consulta SQL
     cQuery := "SELECT" + CRLF
     cQuery += "A1_COD" + CRLF
+    cQuery += ",A1_LOJA" + CRLF
     cQuery += ",A1_NOME" + CRLF
     cQuery += ",A1_LC" + CRLF
     cQuery += ",CAST(A1_VENCLC AS DATE) VENCLC" + CRLF
@@ -58,12 +59,16 @@ User Function SQLExe01()
              + " e LC = " + cValToChar((cAliasTop)->A1_LC)) // Mensagem de bloqueio
         EndIf
         
+        U_SQLExe02((cAliasTop)->A1_COD, (cAliasTop)->A1_LOJA)
+
         // Avança para o próximo registro
-        (cAliasTop)->(DBSkip())
+        (cAliasTop)->(DbSkip())
     End
 
+    (cAliasTop)->(DbGoTop())
+    
     // Fecha o alias após o processamento
-    (cAliasTop)->(DBCloseArea())
+    (cAliasTop)->(DbCloseArea())
 
 Return
 

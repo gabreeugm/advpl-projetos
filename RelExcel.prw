@@ -80,7 +80,7 @@ User Function RelExcel()
                                                                  aPedidos[nX, 3],;
                                                                  aPedidos[nX, 4],;
                                                                  aPedidos[nX, 5],;
-                                                                 aPedidos[nX, 6],;
+                                                                 SToD(aPedidos[nX, 6]),;
                                                                  aPedidos[nX, 7],;
                                                                  aPedidos[nX, 8]})
     Next
